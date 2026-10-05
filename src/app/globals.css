@@ -352,3 +352,10 @@ legend { color: var(--navy-900); font-size: 14px; font-weight: 700; margin-botto
   .legal-top { align-items: flex-start; flex-direction: column; }
   .legal-card { padding: 30px 20px; border-radius: 22px; }
 }
+.hero-logo {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
