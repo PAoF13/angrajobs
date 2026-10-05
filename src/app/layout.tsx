@@ -23,7 +23,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("angrajobs-theme");document.documentElement.dataset.theme=t==="mono"?"mono":"light";}catch(e){}`
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

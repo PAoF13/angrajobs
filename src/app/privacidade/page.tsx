@@ -8,18 +8,20 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage eyebrow="Privacidade" title="Política de Privacidade" updatedAt="4 de outubro de 2026">
+    <LegalPage eyebrow="Privacidade" title="Política de Privacidade" updatedAt="5 de outubro de 2026">
       <p>
         Esta política explica como a AngraJobs trata os dados informados por candidatos e empresas durante a fase de validação da plataforma em Angra dos Reis.
       </p>
 
       <h2>1. Dados coletados</h2>
       <p>Para candidatos, podemos coletar nome, WhatsApp, e-mail opcional, área de interesse, consentimento de comunicação e dados técnicos de origem do acesso.</p>
+      <p>Ao se candidatar a uma vaga, também podemos coletar a vaga escolhida e uma mensagem opcional sobre experiência profissional.</p>
+      <p>O formulário de compatibilidade usa critérios profissionais informados por você para comparar vagas publicadas. Nesta versão, essas respostas de compatibilidade não são armazenadas no banco.</p>
       <p>Para empresas, podemos coletar nome da empresa, nome do responsável, WhatsApp, e-mail profissional opcional, segmento, previsão de contratação, função pretendida e autorização de contato.</p>
       <p>Também podemos registrar dados de navegação e campanha, como página acessada, origem, UTM e eventos de interação, para medir a validação do produto.</p>
 
       <h2>2. Para que usamos os dados</h2>
-      <p>Usamos os dados para operar a lista inicial da AngraJobs, entrar em contato sobre vagas ou contratação, entender a demanda local, medir a efetividade dos canais de divulgação, melhorar a plataforma e proteger os formulários contra abuso.</p>
+      <p>Usamos os dados para operar a lista inicial da AngraJobs, receber candidaturas, entrar em contato sobre vagas ou contratação, entender a demanda local, medir a efetividade dos canais de divulgação, melhorar a plataforma e proteger os formulários contra abuso.</p>
 
       <h2>3. Comunicações</h2>
       <p>O envio de comunicações promocionais ou de novidades depende do consentimento informado no formulário. O consentimento não é marcado automaticamente.</p>

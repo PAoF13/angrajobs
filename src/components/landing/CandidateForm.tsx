@@ -68,8 +68,8 @@ export function CandidateForm() {
     <form className="lead-form" onSubmit={handleSubmit} onFocus={markStarted}>
       <div className="form-heading">
         <span className="eyebrow">Lista inicial</span>
-        <h3>Receba novidades da AngraJobs</h3>
-        <p>Cadastre seu interesse e seja avisado quando novas oportunidades forem publicadas.</p>
+        <h3>Quero receber novas vagas</h3>
+        <p>Cadastre seu interesse e seja avisado quando novas oportunidades forem publicadas na AngraJobs.</p>
       </div>
 
       <label>

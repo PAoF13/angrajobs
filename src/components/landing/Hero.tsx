@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { track } from "@/lib/analytics/track";
 
 function scrollTo(selector: string) {
@@ -17,16 +18,13 @@ export function Hero() {
             Encontre oportunidades de trabalho em Angra dos Reis ou publique sua vaga para alcançar candidatos da região.
           </p>
           <div className="hero-actions">
-            <button
-              type="button"
+            <Link
               className="button button-primary"
-              onClick={() => {
-                void track("click_find_jobs", { location: "hero" });
-                scrollTo("#form-candidato");
-              }}
+              href="/vagas"
+              onClick={() => void track("click_find_jobs", { location: "hero" })}
             >
               Encontrar vagas
-            </button>
+            </Link>
             <button
               type="button"
               className="button button-secondary"
@@ -42,11 +40,7 @@ export function Hero() {
         </div>
 
         <div className="hero-card" aria-label="Resumo da proposta da AngraJobs">
-        <img
-  src="/logo-angrajobs.png"
-  alt="AngraJobs"
-  className="hero-logo"
-/>
+          <img src="/logo-angrajobs.png" alt="AngraJobs" className="hero-logo" />
           <p className="hero-card-kicker">Feito para Angra</p>
           <strong>Uma ponte direta entre quem quer trabalhar e quem precisa contratar.</strong>
           <div className="hero-metrics">

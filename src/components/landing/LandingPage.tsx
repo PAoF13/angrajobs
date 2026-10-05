@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { CandidateForm } from "./CandidateForm";
 import { CompanyForm } from "./CompanyForm";
-import { Brand } from "./Brand";
 import { track } from "@/lib/analytics/track";
+import { SiteFooter } from "./SiteFooter";
 
 const candidateBenefits = [
   "Vagas focadas em Angra dos Reis.",
@@ -43,8 +44,6 @@ export function LandingPage() {
     void track("page_view");
   }, []);
 
-  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#";
-  const tiktokUrl = process.env.NEXT_PUBLIC_TIKTOK_URL || "#";
 
   return (
     <>
@@ -68,7 +67,7 @@ export function LandingPage() {
                   scrollTo("#form-candidato");
                 }}
               >
-                Quero receber oportunidades
+                Quero receber novas vagas
               </button>
             </div>
             <div id="form-candidato" className="form-anchor"><CandidateForm /></div>
@@ -145,16 +144,13 @@ export function LandingPage() {
           <div className="container final-cta-inner">
             <span className="eyebrow eyebrow-light">AngraJobs</span>
             <h2>Angra merece uma forma melhor de encontrar trabalho e contratar.</h2>
-            <p>Se você procura uma oportunidade, cadastre seu interesse. Se sua empresa contrata, entre para o lançamento da AngraJobs.</p>
+            <p>Se você procura uma oportunidade, veja as vagas publicadas. Se quiser alertas, cadastre seu interesse. Se sua empresa contrata, entre para o lançamento da AngraJobs.</p>
             <div className="hero-actions final-actions">
-              <button
-                type="button"
+              <Link
                 className="button button-light"
-                onClick={() => {
-                  void track("click_find_jobs", { location: "final_cta" });
-                  scrollTo("#form-candidato");
-                }}
-              >Encontrar oportunidades</button>
+                href="/vagas"
+                onClick={() => void track("click_find_jobs", { location: "final_cta" })}
+              >Encontrar oportunidades</Link>
               <button
                 type="button"
                 className="button button-outline-light"
@@ -168,26 +164,7 @@ export function LandingPage() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="container footer-grid">
-          <div>
-            <Brand href="#top" />
-            <p>Vagas e empregos em Angra dos Reis.</p>
-            <a className="footer-contact" href="mailto:contato.angrajobs@gmail.com">contato.angrajobs@gmail.com</a>
-            <p className="footer-domain">angrajobs.com.br</p>
-          </div>
-          <div className="footer-links">
-            <button type="button" onClick={() => scrollTo("#candidatos")}>Vagas</button>
-            <button type="button" onClick={() => scrollTo("#empresas")}>Para Empresas</button>
-            <a href={instagramUrl} target={instagramUrl === "#" ? undefined : "_blank"} rel="noreferrer" onClick={() => void track("click_instagram", { location: "footer" })}>Instagram</a>
-            <a href={tiktokUrl} target={tiktokUrl === "#" ? undefined : "_blank"} rel="noreferrer">TikTok</a>
-            <a href="mailto:contato.angrajobs@gmail.com">Contato</a>
-            <a href="/privacidade">Política de Privacidade</a>
-            <a href="/termos">Termos de Uso</a>
-          </div>
-        </div>
-        <div className="container footer-bottom">© 2026 AngraJobs. Todos os direitos reservados.</div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

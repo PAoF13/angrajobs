@@ -139,3 +139,17 @@ Estes pontos dependem de contas ou ativos que não estão no código:
 - `docs/VALIDATION_METRICS.sql`
 - `docs/adr/ADR-0001-validation-landing.md`
 - `CHANGELOG.md`
+
+## v0.2: vagas públicas e compatibilidade
+
+A evolução v0.2 adiciona `/vagas`, `/vagas/[slug]`, candidaturas privadas simples, compatibilidade candidato-vaga e tema Claro/P&B.
+
+Antes do deploy, execute a migration:
+
+```text
+supabase/migrations/0003_jobs_matching_theme.sql
+```
+
+Depois, a criação/edição de vagas acontece no Supabase. Uma vaga com `status = published` aparece automaticamente em `/vagas`; `draft`, `paused`, `rejected` e `expired` não aparecem publicamente.
+
+Consulte `docs/JOBS_V0_2.md` para o passo a passo de teste e cadastro.

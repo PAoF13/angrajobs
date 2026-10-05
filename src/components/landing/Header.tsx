@@ -1,22 +1,22 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Brand } from "./Brand";
 import { track } from "@/lib/analytics/track";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
-  function goTo(id: string, event?: "click_find_jobs" | "click_company") {
-    if (event) void track(event, { location: "header" });
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  function close() {
     setOpen(false);
   }
 
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Brand href="#top" />
+        <Brand href="/" />
 
         <button
           className="menu-toggle"
@@ -31,12 +31,13 @@ export function Header() {
         </button>
 
         <nav className={`nav ${open ? "nav-open" : ""}`} aria-label="Navegação principal">
-          <button type="button" className="nav-link" onClick={() => goTo("#candidatos")}>Vagas</button>
-          <button type="button" className="nav-link" onClick={() => goTo("#empresas")}>Para Empresas</button>
-          <button type="button" className="nav-link" onClick={() => goTo("#como-funciona")}>Como funciona</button>
+          <Link className="nav-link" href="/vagas" onClick={() => { void track("click_find_jobs", { location: "header" }); close(); }}>Vagas</Link>
+          <Link className="nav-link" href="/#empresas" onClick={close}>Para Empresas</Link>
+          <Link className="nav-link" href="/#como-funciona" onClick={close}>Como funciona</Link>
+          <ThemeToggle />
           <div className="nav-actions">
-            <button type="button" className="button button-secondary button-small" onClick={() => goTo("#form-empresa", "click_company")}>Sou empresa</button>
-            <button type="button" className="button button-primary button-small" onClick={() => goTo("#form-candidato", "click_find_jobs")}>Encontrar vagas</button>
+            <Link className="button button-secondary button-small" href="/#form-empresa" onClick={() => { void track("click_company", { location: "header" }); close(); }}>Sou empresa</Link>
+            <Link className="button button-primary button-small" href="/vagas" onClick={() => { void track("click_find_jobs", { location: "header_button" }); close(); }}>Encontrar vagas</Link>
           </div>
         </nav>
       </div>

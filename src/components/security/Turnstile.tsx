@@ -42,7 +42,7 @@ export function Turnstile({
     widgetIdRef.current = window.turnstile.render(containerRef.current, {
       sitekey: siteKey,
       action,
-      theme: "light",
+      theme: "auto",
       callback: onToken,
       "expired-callback": () => onToken(""),
       "error-callback": () => onToken(""),

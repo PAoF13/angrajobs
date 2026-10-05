@@ -103,6 +103,10 @@ export const analyticsEventNames = [
   "company_form_submitted",
   "click_instagram",
   "click_whatsapp",
+  "job_view",
+  "job_match_completed",
+  "job_application_started",
+  "job_application_submitted",
 ] as const;
 
 export const analyticsEventSchema = z.object({

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPage eyebrow="Termos" title="Termos de Uso" updatedAt="4 de outubro de 2026">
+    <LegalPage eyebrow="Termos" title="Termos de Uso" updatedAt="5 de outubro de 2026">
       <p>
         Estes termos regulam o uso da página de validação da AngraJobs. Nesta fase, a plataforma serve principalmente para registrar interesse de candidatos e empresas antes do lançamento das funcionalidades completas.
       </p>
@@ -22,19 +22,23 @@ export default function TermsPage() {
       <h2>3. Empresas</h2>
       <p>O cadastro de uma empresa representa interesse em conhecer ou testar a AngraJobs. Empresas devem fornecer informações verdadeiras e não podem anunciar oportunidades ilícitas, enganosas, discriminatórias ou incompatíveis com a legislação aplicável.</p>
 
-      <h2>4. Conteúdo e disponibilidade</h2>
+      <h2>4. Compatibilidade de vagas</h2>
+      <p>A pontuação de compatibilidade compara critérios profissionais informados pelo candidato com requisitos cadastrados na vaga. Ela não representa chance de contratação, não garante entrevista e não substitui a avaliação da empresa.</p>
+      <p>A AngraJobs não usa essa pontuação para rejeitar ou bloquear candidatos nesta versão.</p>
+
+      <h2>5. Conteúdo e disponibilidade</h2>
       <p>A AngraJobs poderá alterar, testar, interromper ou lançar funcionalidades durante a fase de validação. Recursos descritos como futuros não constituem promessa de disponibilidade em data específica.</p>
 
-      <h2>5. Segurança e uso aceitável</h2>
+      <h2>6. Segurança e uso aceitável</h2>
       <p>É proibido tentar explorar falhas, automatizar cadastros abusivos, interferir na infraestrutura, coletar dados de terceiros sem autorização ou contornar mecanismos de segurança.</p>
 
-      <h2>6. Responsabilidade</h2>
+      <h2>7. Responsabilidade</h2>
       <p>A AngraJobs pretende facilitar a conexão entre candidatos e empresas. As decisões de contratação, condições de trabalho e informações fornecidas por terceiros permanecem sob responsabilidade das partes envolvidas, observada a legislação aplicável.</p>
 
-      <h2>7. Privacidade</h2>
+      <h2>8. Privacidade</h2>
       <p>O tratamento de dados pessoais é descrito na <a href="/privacidade">Política de Privacidade</a>.</p>
 
-      <h2>8. Contato</h2>
+      <h2>9. Contato</h2>
       <p>Dúvidas podem ser enviadas para <a href="mailto:contato.angrajobs@gmail.com">contato.angrajobs@gmail.com</a>.</p>
     </LegalPage>
   );
