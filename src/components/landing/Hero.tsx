@@ -42,7 +42,11 @@ export function Hero() {
         </div>
 
         <div className="hero-card" aria-label="Resumo da proposta da AngraJobs">
-          <div className="hero-card-mark" aria-hidden="true">AJ</div>
+        <img
+  src="/logo-angrajobs.png"
+  alt="AngraJobs"
+  className="hero-logo"
+/>
           <p className="hero-card-kicker">Feito para Angra</p>
           <strong>Uma ponte direta entre quem quer trabalhar e quem precisa contratar.</strong>
           <div className="hero-metrics">
