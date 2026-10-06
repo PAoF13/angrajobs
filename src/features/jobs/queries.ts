@@ -48,7 +48,7 @@ export async function listPublishedJobs(): Promise<Job[]> {
     return [];
   }
 
-  return (data ?? []) as Job[];
+  return (data ?? []) as unknown as Job[];
 }
 
 export async function getPublishedJobBySlug(slug: string): Promise<Job | null> {
@@ -66,5 +66,5 @@ export async function getPublishedJobBySlug(slug: string): Promise<Job | null> {
     return null;
   }
 
-  return (data as Job | null) ?? null;
+  return (data as unknown as Job | null) ?? null;
 }
