@@ -3,43 +3,34 @@ import { LegalPage } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade | AngraJobs",
-  description: "Como a AngraJobs trata dados pessoais na landing de validação.",
+  description: "Como a AngraJobs trata dados de candidatos, empresas e usuários da plataforma.",
 };
 
 export default function PrivacyPage() {
   return (
     <LegalPage eyebrow="Privacidade" title="Política de Privacidade" updatedAt="5 de outubro de 2026">
-      <p>
-        Esta política explica como a AngraJobs trata os dados informados por candidatos e empresas durante a fase de validação da plataforma em Angra dos Reis.
-      </p>
-
-      <h2>1. Dados coletados</h2>
-      <p>Para candidatos, podemos coletar nome, WhatsApp, e-mail opcional, área de interesse, consentimento de comunicação e dados técnicos de origem do acesso.</p>
-      <p>Ao se candidatar a uma vaga, também podemos coletar a vaga escolhida e uma mensagem opcional sobre experiência profissional.</p>
-      <p>O formulário de compatibilidade usa critérios profissionais informados por você para comparar vagas publicadas. Nesta versão, essas respostas de compatibilidade não são armazenadas no banco.</p>
-      <p>Para empresas, podemos coletar nome da empresa, nome do responsável, WhatsApp, e-mail profissional opcional, segmento, previsão de contratação, função pretendida e autorização de contato.</p>
-      <p>Também podemos registrar dados de navegação e campanha, como página acessada, origem, UTM e eventos de interação, para medir a validação do produto.</p>
-
-      <h2>2. Para que usamos os dados</h2>
-      <p>Usamos os dados para operar a lista inicial da AngraJobs, receber candidaturas, entrar em contato sobre vagas ou contratação, entender a demanda local, medir a efetividade dos canais de divulgação, melhorar a plataforma e proteger os formulários contra abuso.</p>
-
-      <h2>3. Comunicações</h2>
-      <p>O envio de comunicações promocionais ou de novidades depende do consentimento informado no formulário. O consentimento não é marcado automaticamente.</p>
-
-      <h2>4. Compartilhamento</h2>
-      <p>Podemos usar fornecedores de infraestrutura necessários para operar a página, banco de dados, hospedagem e proteção contra abuso. Não vendemos os dados cadastrados.</p>
-
-      <h2>5. Segurança e retenção</h2>
-      <p>Aplicamos controles técnicos compatíveis com esta fase do produto, incluindo validação no servidor, restrição de acesso ao banco e proteção anti-bot quando configurada. Os dados devem ser mantidos apenas pelo período necessário para a finalidade informada, obrigações aplicáveis e defesa de direitos.</p>
-
-      <h2>6. Seus direitos</h2>
-      <p>Você pode solicitar informações, correção, atualização, oposição, revogação do consentimento ou exclusão quando aplicável. A análise do pedido observará a legislação brasileira de proteção de dados.</p>
-
-      <h2>7. Contato</h2>
+      <p>Esta política descreve como a AngraJobs trata dados pessoais usados para contas, candidaturas, publicação de vagas, suporte, segurança e validação do produto.</p>
+      <h2>1. Dados de conta</h2>
+      <p>Podemos tratar nome, e-mail, WhatsApp, cidade, tipo de conta e informações necessárias para autenticação. Senhas são gerenciadas pelo serviço de autenticação e não devem ser registradas em logs da AngraJobs.</p>
+      <h2>2. Dados de candidatos</h2>
+      <p>Podemos tratar área profissional, bairro, experiência, disponibilidade, preferências profissionais, habilidades, candidaturas, mensagens enviadas às vagas e histórico de status.</p>
+      <p>A compatibilidade de vagas usa critérios profissionais informados pelo candidato e cadastrados na vaga. Ela não representa probabilidade de contratação e não deve ser usada para decisão automática de contratação.</p>
+      <h2>3. Dados de empresas</h2>
+      <p>Podemos tratar nome da empresa, responsável, contato, dados cadastrais, vagas, candidaturas recebidas, plano, solicitações comerciais, divulgação e registros de segurança.</p>
+      <h2>4. Denúncias e moderação</h2>
+      <p>Ao denunciar uma vaga, podemos tratar motivo, detalhes, vínculo com a vaga, usuário autenticado e e-mail opcional para retorno. Esses dados são usados para revisão, prevenção de fraude e segurança da plataforma.</p>
+      <h2>5. Analytics e segurança</h2>
+      <p>Podemos registrar eventos de navegação, origem, UTMs, tentativas bloqueadas, dados técnicos minimizados e identificadores necessários para medir uso e combater abuso. Não registramos senhas, chaves secretas ou conteúdo integral de dados privados em logs operacionais.</p>
+      <h2>6. Compartilhamento</h2>
+      <p>Dados podem ser processados por fornecedores necessários para hospedagem, autenticação, banco de dados, proteção anti-bot e operação técnica. Não vendemos dados pessoais cadastrados.</p>
+      <h2>7. Retenção e exclusão</h2>
+      <p>Os dados são mantidos pelo período necessário às finalidades informadas, segurança, obrigações aplicáveis e defesa de direitos. Pedidos de correção ou exclusão podem ser feitos pelo canal de contato.</p>
+      <h2>8. Seus direitos</h2>
+      <p>Você pode solicitar acesso, correção, atualização, oposição, revogação de consentimento ou exclusão quando aplicável, observada a legislação brasileira.</p>
+      <h2>9. Contato</h2>
       <p>Para assuntos de privacidade, use <a href="mailto:contato.angrajobs@gmail.com">contato.angrajobs@gmail.com</a>.</p>
-
-      <h2>8. Atualizações</h2>
-      <p>Esta política poderá ser atualizada conforme a AngraJobs evoluir. A data da versão vigente ficará indicada nesta página.</p>
+      <h2>10. Atualizações</h2>
+      <p>Esta política pode ser atualizada conforme a plataforma evoluir. A data da versão vigente permanece indicada nesta página.</p>
     </LegalPage>
   );
 }

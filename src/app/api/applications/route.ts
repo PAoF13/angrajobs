@@ -3,6 +3,7 @@ import { jobApplicationSchema } from "@/features/jobs/schemas";
 import { createSupabaseAdmin } from "@/lib/supabase/admin";
 import { consumeRateLimit } from "@/lib/security/rate-limit";
 import { verifyTurnstile } from "@/lib/security/turnstile";
+import { getRequestAccount } from "@/lib/auth/request";
 
 const PRIVACY_VERSION = "2026-10-05-v2";
 
@@ -19,6 +20,14 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { error: { code: "RATE_LIMITED", message: "Muitas tentativas em pouco tempo. Tente novamente mais tarde.", requestId } },
         { status: 429, headers: { "Cache-Control": "no-store" } },
+      );
+    }
+
+    const account = await getRequestAccount(request);
+    if (!account || account.profile.role !== "candidate") {
+      return NextResponse.json(
+        { error: { code: "AUTH_REQUIRED", message: "Entre com uma conta de candidato para se candidatar.", requestId } },
+        { status: 401, headers: { "Cache-Control": "no-store" } },
       );
     }
 
@@ -59,6 +68,7 @@ export async function POST(request: Request) {
 
     const { error } = await supabase.from("job_applications").insert({
       job_id: data.jobId,
+      candidate_id: account.user.id,
       name: data.name,
       whatsapp: normalizedWhatsapp,
       email: data.email || null,
@@ -74,7 +84,7 @@ export async function POST(request: Request) {
     if (error) {
       if (error.code === "23505") {
         return NextResponse.json(
-          { error: { code: "DUPLICATE_APPLICATION", message: "Já existe uma candidatura com este WhatsApp para esta vaga.", requestId } },
+          { error: { code: "DUPLICATE_APPLICATION", message: "Você já se candidatou a esta vaga.", requestId } },
           { status: 409, headers: { "Cache-Control": "no-store" } },
         );
       }

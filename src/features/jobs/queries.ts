@@ -3,6 +3,7 @@ import type { Job } from "./types";
 
 const jobColumns = [
   "id",
+  "company_id",
   "slug",
   "title",
   "company_name",
@@ -25,6 +26,9 @@ const jobColumns = [
   "status",
   "published_at",
   "expires_at",
+  "duration_days",
+  "is_featured",
+  "featured_until",
   "created_at",
   "updated_at",
 ].join(",");
@@ -40,6 +44,7 @@ export async function listPublishedJobs(): Promise<Job[]> {
     .select(jobColumns)
     .eq("status", "published")
     .or(activeExpiryFilter())
+    .order("is_featured", { ascending: false })
     .order("published_at", { ascending: false, nullsFirst: false })
     .order("created_at", { ascending: false });
 

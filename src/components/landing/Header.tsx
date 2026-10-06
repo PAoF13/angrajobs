@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Brand } from "./Brand";
 import { track } from "@/lib/analytics/track";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { AccountNav } from "@/components/account/AccountNav";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -34,11 +34,7 @@ export function Header() {
           <Link className="nav-link" href="/vagas" onClick={() => { void track("click_find_jobs", { location: "header" }); close(); }}>Vagas</Link>
           <Link className="nav-link" href="/#empresas" onClick={close}>Para Empresas</Link>
           <Link className="nav-link" href="/#como-funciona" onClick={close}>Como funciona</Link>
-          <ThemeToggle />
-          <div className="nav-actions">
-            <Link className="button button-secondary button-small" href="/#form-empresa" onClick={() => { void track("click_company", { location: "header" }); close(); }}>Sou empresa</Link>
-            <Link className="button button-primary button-small" href="/vagas" onClick={() => { void track("click_find_jobs", { location: "header_button" }); close(); }}>Encontrar vagas</Link>
-          </div>
+          <AccountNav onNavigate={close} />
         </nav>
       </div>
     </header>

@@ -1,0 +1,2 @@
+import { Header } from "@/components/landing/Header"; import { SiteFooter } from "@/components/landing/SiteFooter"; import { RecoveryRequestForm } from "@/components/auth/RecoveryForms";
+export const metadata={title:"Recuperar senha | AngraJobs"}; export default function Page(){return <><Header/><main className="account-page"><div className="container account-narrow"><RecoveryRequestForm/></div></main><SiteFooter/></>}

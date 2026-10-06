@@ -153,3 +153,63 @@ supabase/migrations/0003_jobs_matching_theme.sql
 Depois, a criação/edição de vagas acontece no Supabase. Uma vaga com `status = published` aparece automaticamente em `/vagas`; `draft`, `paused`, `rejected` e `expired` não aparecem publicamente.
 
 Consulte `docs/JOBS_V0_2.md` para o passo a passo de teste e cadastro.
+
+## v0.3: contas, painel empresarial e automações
+
+A v0.3 transforma a v0.2 em uma operação autenticada sem adicionar chat, app nativo, IA de contratação ou currículo complexo.
+
+Principais rotas:
+
+```text
+/entrar
+/cadastro
+/recuperar-senha
+/redefinir-senha
+/candidato
+/candidato/perfil
+/candidato/candidaturas
+/empresa
+/empresa/vagas
+/empresa/vagas/nova
+/empresa/plano
+/empresa/divulgacao
+/configuracoes
+/admin
+```
+
+Aplique, depois das migrations anteriores:
+
+```text
+supabase/migrations/0004_accounts_companies_plans_reports.sql
+supabase/migrations/0005_automation_cron.sql
+```
+
+A migration `0004` cria contas de domínio, empresas, membros, perfis profissionais, subscriptions, solicitações comerciais, denúncias, notificações e regras RLS. Ela também vincula novas contas do Supabase Auth aos perfis da AngraJobs.
+
+A migration `0005` agenda expiração e alertas via Supabase Cron a cada 15 minutos. Se a extensão Cron não estiver habilitada no projeto, habilite-a no painel do Supabase antes de rodar essa migration.
+
+### Duração de vagas
+
+- Básico: 1 vaga ativa, 7 dias.
+- Pro: até 3 vagas ativas, até 180 dias.
+- Business: até 10 vagas ativas, até 180 dias.
+- Destaque: R$ 29 por vaga, sujeito à confirmação comercial/pagamento.
+
+Uma vaga vencida para de aparecer publicamente pela própria consulta, mesmo antes da próxima execução do cron.
+
+### Pagamentos
+
+A v0.3 deixa o modelo pronto para cobrança, mas **não simula pagamento**. Planos pagos só devem ser ativados por webhook autenticado do provedor ou aprovação administrativa legítima durante beta. Consulte `docs/V0_3_PROFESSIONAL.md`.
+
+### Supabase Auth
+
+Configure no painel:
+
+```text
+Site URL: https://angrajobs.com.br
+Redirect URLs:
+https://angrajobs.com.br/**
+https://www.angrajobs.com.br/**
+```
+
+Consulte `docs/V0_3_PROFESSIONAL.md` para testes e rollout.

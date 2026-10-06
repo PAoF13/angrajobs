@@ -1,0 +1,2 @@
+import { Header } from "@/components/landing/Header"; import { SiteFooter } from "@/components/landing/SiteFooter"; import { SettingsPanel } from "@/components/account/SettingsPanel";
+export const metadata={title:"Configurações | AngraJobs"}; export default function Page(){return <><Header/><main className="account-page"><div className="container"><div className="dashboard-heading"><span className="eyebrow">Configurações</span><h1>Sua conta, do seu jeito.</h1></div><SettingsPanel/></div></main><SiteFooter/></>}

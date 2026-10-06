@@ -9,7 +9,7 @@ export function JobCard({ job, match }: { job: Job; match?: JobMatchResult }) {
     <article className="job-card">
       <div className="job-card-topline">
         <span className="job-status-dot" aria-hidden="true" />
-        <span>Vaga publicada</span>
+        <span>{job.is_featured && (!job.featured_until || new Date(job.featured_until) > new Date()) ? "Destaque" : "Vaga publicada"}</span>
         {match ? <strong className="match-badge">{match.score}% compatível</strong> : null}
       </div>
       <h2>{job.title}</h2>

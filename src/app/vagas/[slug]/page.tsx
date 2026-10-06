@@ -5,6 +5,7 @@ import { Header } from "@/components/landing/Header";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 import { JobApplicationForm } from "@/components/jobs/JobApplicationForm";
 import { JobViewTracker } from "@/components/jobs/JobViewTracker";
+import { ReportJob } from "@/components/reports/ReportJob";
 import { getPublishedJobBySlug } from "@/features/jobs/queries";
 import { formatJobLocation, formatJobSalary, formatPublishedDate, formatStartDate } from "@/features/jobs/format";
 
@@ -79,6 +80,7 @@ export default async function JobDetailPage({ params }: Props) {
               <strong>Importante</strong>
               <p>A AngraJobs não cobra do candidato para enviar esta candidatura. A empresa é responsável pelo processo seletivo e pela decisão de contratação.</p>
             </div>
+            <ReportJob jobId={job.id} />
           </article>
 
           <aside className="job-application-column">

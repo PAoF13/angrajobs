@@ -1,0 +1,10 @@
+import{NextResponse}from"next/server";import{getRequestAccount,isAdmin}from"@/lib/auth/request";import{createSupabaseAdmin}from"@/lib/supabase/admin";type C={params:Promise<{id:string}>};
+export async function PATCH(request:Request,{params}:C){const{id}=await params;const account=await getRequestAccount(request);if(!isAdmin(account))return NextResponse.json({error:{message:"Acesso negado."}},{status:403});const body=await request.json();const action=body?.action;if(!["approve","reject"].includes(action))return NextResponse.json({error:{message:"Ação inválida."}},{status:400});const admin=createSupabaseAdmin();const{data:req}=await admin.from("plan_requests").select("*").eq("id",id).maybeSingle();if(!req||req.status!=="pending")return NextResponse.json({error:{message:"Solicitação indisponível."}},{status:409});if(action==="reject"){await admin.from("plan_requests").update({status:"rejected",decided_at:new Date().toISOString()}).eq("id",id);return NextResponse.json({ok:true})}
+if(req.request_type==="subscription"){
+  const end=new Date();end.setDate(end.getDate()+30);
+  await admin.from("subscriptions").upsert({company_id:req.company_id,plan_code:req.plan_code,status:"active",period_start:new Date().toISOString(),period_end:end.toISOString(),provider:"manual_beta"},{onConflict:"company_id"});
+}else if(req.request_type==="featured_job"&&req.job_id){
+  const featureEnd=new Date();featureEnd.setDate(featureEnd.getDate()+7);const expiry=new Date();expiry.setDate(expiry.getDate()+Math.min(Number(req.duration_days||30),180));
+  await admin.from("jobs").update({is_featured:true,featured_until:featureEnd.toISOString(),duration_days:Math.min(Number(req.duration_days||30),180),expires_at:expiry.toISOString()}).eq("id",req.job_id).eq("company_id",req.company_id);
+}
+await admin.from("plan_requests").update({status:"approved",decided_at:new Date().toISOString()}).eq("id",id);await admin.from("audit_logs").insert({actor_id:account!.user.id,action:"commercial_request.approved",entity_type:"plan_request",entity_id:id,metadata:{request_type:req.request_type,plan_code:req.plan_code}});return NextResponse.json({ok:true})}

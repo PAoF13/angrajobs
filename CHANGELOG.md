@@ -20,3 +20,22 @@
 - O percentual é apresentado como compatibilidade, nunca como chance de contratação.
 - Alternância visual Claro / P&B com preferência salva no navegador.
 - Landing preservada, com `Encontrar vagas` separado do formulário `Quero receber novas vagas`.
+
+## 0.3.0 - Contas, painel empresarial e operação profissional
+
+- Cadastro e login separados para candidatos e empresas via Supabase Auth.
+- Recuperação e redefinição de senha.
+- Perfil persistente de candidato e dados persistentes da empresa.
+- Dashboard de candidato com perfil e candidaturas.
+- Dashboard empresarial com vagas, candidaturas e atualização de status.
+- Propriedade segura de vagas por empresa e isolamento por RLS.
+- Vagas gratuitas limitadas a 7 dias e expiração automática.
+- Planos Pro e Business preparados para permitir até 180 dias conforme entitlement ativo.
+- Planos Básico R$ 0, Pro R$ 89/mês e Business R$ 199/mês.
+- Solicitação de vaga destacada por R$ 29.
+- Solicitação de divulgação com vídeo/live/collab, plataforma, duração e estimativa limitada a R$ 50.
+- Configurações de conta, empresa e tema Claro/P&B.
+- Denúncia de vagas e painel interno de moderação.
+- Notificações internas de candidaturas e expiração próxima.
+- Estrutura de pagamento preparada para webhook idempotente, sem ativar plano pago por retorno do navegador.
+- Rotina Supabase Cron para expiração de vagas, assinaturas e alertas.

@@ -86,16 +86,10 @@ export function LandingPage() {
                 <strong>Lançamento AngraJobs</strong>
                 <p>Empresas participantes do lançamento poderão testar a plataforma antes da abertura dos planos comerciais.</p>
               </div>
-              <button
-                type="button"
-                className="button button-secondary"
-                onClick={() => {
-                  void track("click_company", { location: "company_section" });
-                  scrollTo("#form-empresa");
-                }}
-              >
-                Quero publicar uma vaga
-              </button>
+              <div className="hero-actions">
+                <Link className="button button-primary" href="/cadastro?tipo=empresa" onClick={() => void track("click_company", { location: "company_account" })}>Criar conta empresarial</Link>
+                <button type="button" className="button button-secondary" onClick={() => { void track("click_company", { location: "company_section" }); scrollTo("#form-empresa"); }}>Quero falar com a AngraJobs</button>
+              </div>
             </div>
             <div id="form-empresa" className="form-anchor"><CompanyForm /></div>
           </div>
@@ -136,7 +130,7 @@ export function LandingPage() {
               <p>A AngraJobs pretende trabalhar com verificação, atualização das oportunidades e um canal claro para denúncias.</p>
               <p><strong>Não cobramos do candidato para se candidatar às oportunidades básicas da plataforma.</strong></p>
             </div>
-            <a className="text-link disabled-link" href="#" aria-disabled="true" onClick={(event) => event.preventDefault()}>Denunciar uma vaga <small>em breve</small></a>
+            <Link className="text-link" href="/vagas">Abrir vagas e denunciar</Link>
           </div>
         </section>
 
@@ -151,14 +145,7 @@ export function LandingPage() {
                 href="/vagas"
                 onClick={() => void track("click_find_jobs", { location: "final_cta" })}
               >Encontrar oportunidades</Link>
-              <button
-                type="button"
-                className="button button-outline-light"
-                onClick={() => {
-                  void track("click_company", { location: "final_cta" });
-                  scrollTo("#form-empresa");
-                }}
-              >Cadastrar minha empresa</button>
+              <Link className="button button-outline-light" href="/cadastro?tipo=empresa" onClick={() => void track("click_company", { location: "final_cta" })}>Criar conta empresarial</Link>
             </div>
           </div>
         </section>

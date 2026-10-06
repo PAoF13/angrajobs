@@ -11,6 +11,7 @@ export type JobStatus = (typeof jobStatuses)[number];
 
 export type Job = {
   id: string;
+  company_id?: string | null;
   slug: string;
   title: string;
   company_name: string;
@@ -33,6 +34,9 @@ export type Job = {
   status: JobStatus;
   published_at: string | null;
   expires_at: string | null;
+  duration_days?: number;
+  is_featured?: boolean;
+  featured_until?: string | null;
   created_at: string;
   updated_at: string;
 };
